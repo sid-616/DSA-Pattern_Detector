@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoGuard | DSA Anti-Pattern & Flaw Detector</title>
+  <meta name="description" content="Bright, modern static analyzer and interactive detector for inefficient and flawed Data Structures and Algorithms patterns before interviewers spot them.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="brand-title">AlgoGuard</span>
+          <span class="brand-tag">DSA Sentinel</span>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="scanner" role="tab">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          Code Scanner
+        </button>
+        <button class="tab-btn" data-tab="catalog" role="tab">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Anti-Pattern Catalog
+        </button>
+        <button class="tab-btn" data-tab="quiz" role="tab">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Spot the Trap (Quiz)
+        </button>
+        <button class="tab-btn" data-tab="matrix" role="tab">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+          Complexity Matrix
+        </button>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button class="btn-icon" id="btn-share-link" title="Copy Website Link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+          </svg>
+        </button>
+        <button class="btn-icon" id="theme-toggle" title="Toggle Dark/Light Mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="btn-secondary" id="btn-export" title="Export Markdown Report">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export Report
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- App Main Content Area -->
+  <main class="app-main">
+
+    <!-- ==================== VIEW 1: FRONT PAGE & SCANNER ==================== -->
+    <section class="view-section active" id="view-scanner">
+      
+      <!-- Front Page Hero Section -->
+      <div class="hero-header">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>DSA Anti-Pattern & Flaw Detector</span>
+        </div>
+        <h1 class="hero-title">
+          Detect Wrong DSA Patterns
+          <span class="hero-green-text">Before Your Interviewer Does</span>
+        </h1>
+        <p class="hero-subtitle">
+          Instantly audit code for hidden quadratic bottlenecks O(N²), exponential recursion blowups O(2ᴺ), cycle traps, and classic algorithmic pitfalls with instant Big-O verification.
+        </p>
+
+        <!-- Quick Test Pills Strip -->
+        <div class="quick-preset-container">
+          <span class="quick-preset-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Quick Traps:
+          </span>
+          <div class="quick-preset-scroll" id="quick-preset-scroll">
+            <button class="preset-pill active" data-preset="two-sum-lookup">Two Sum O(N²)</button>
+            <button class="preset-pill" data-preset="fibonacci-recursion">Fibonacci O(2ᴺ)</button>
+            <button class="preset-pill" data-preset="queue-pop0">Queue pop(0)</button>
+            <button class="preset-pill" data-preset="bfs-no-visited">BFS Infinite Cycle</button>
+            <button class="preset-pill" data-preset="binary-search-bug">Binary Search Overflow</button>
+            <button class="preset-pill" data-preset="subarray-brute">Subarray O(N²)</button>
+            <button class="preset-pill" data-preset="coin-change-greedy">Greedy Coin Change</button>
+          </div>
+        </div>
+
+        <!-- 4 Stat & Feature Badges -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number">100% Client-Side</div>
+              <div class="stat-desc">Zero latency local static scan</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number">20+ Anti-Patterns</div>
+              <div class="stat-desc">Recursion, queue, search traps</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number">Instant Big-O</div>
+              <div class="stat-desc">Detected vs optimal bounds</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number">1-Click Fix Diffs</div>
+              <div class="stat-desc">Side-by-side corrected code</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Dual Panel: Code Editor & Analysis Dashboard -->
+      <div class="scanner-grid">
+        <!-- Left: Code Editor Area -->
+        <div class="editor-card">
+          <div class="editor-toolbar">
+            <div class="toolbar-group">
+              <label for="preset-select" style="font-size: 0.82rem; font-weight: 700; color: #047857;">All Presets:</label>
+              <select id="preset-select" class="form-select">
+                <option value="two-sum-lookup">Two Sum (Nested Linear Scan)</option>
+                <option value="fibonacci-recursion">Fibonacci (Exponential Naive Recursion)</option>
+                <option value="queue-pop0">Queue Simulation (List pop(0) Shift)</option>
+                <option value="bfs-no-visited">Graph BFS (Missing Visited Set)</option>
+                <option value="binary-search-bug">Binary Search (Midpoint Overflow & Loop)</option>
+                <option value="subarray-brute">Subarray Sum (Quadratic Brute Force)</option>
+                <option value="string-concat-loop">String Concatenation in Loop</option>
+                <option value="coin-change-greedy">Coin Change (Greedy Fallacy)</option>
+                <option value="mutate-iterating">Modifying Collection While Iterating</option>
+                <option value="two-pointers-unsorted">Two Pointers on Unsorted Array</option>
+              </select>
+            </div>
+
+            <div class="toolbar-group">
+              <select id="lang-select" class="form-select">
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+              </select>
+              <button id="btn-copy-code" class="btn-secondary" title="Copy Code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy
+              </button>
+              <button id="btn-clear" class="btn-secondary" title="Clear Code">
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <!-- Code Input Box with Line Numbers -->
+          <div class="editor-wrapper">
+            <div class="line-numbers" id="line-numbers">1</div>
+            <textarea id="code-input" class="code-textarea" spellcheck="false" placeholder="// Paste your Data Structures & Algorithms solution here..."></textarea>
+          </div>
+
+          <!-- Editor Footer Controls -->
+          <div class="editor-footer">
+            <div class="footer-stats">
+              <span id="stat-lines">0 lines</span>
+              <span id="stat-chars">0 chars</span>
+            </div>
+            <button id="btn-analyze" class="btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Scan for Anti-Patterns
+              <span class="kbd-shortcut">Ctrl+Enter</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Results Dashboard -->
+        <div class="results-card">
+          <div class="results-header">
+            <h3>
+              <svg style="width: 22px; height: 22px; color: #10b981;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+              Algorithmic Health Audit
+            </h3>
+          </div>
+
+          <!-- Score Banner -->
+          <div class="score-banner">
+            <div class="score-circle" id="score-circle">
+              <span id="score-number">100</span>
+              <span class="score-label">Score</span>
+            </div>
+            <div class="score-info">
+              <h4 id="score-title">Analysis Ready</h4>
+              <p id="score-desc">Run a scan to inspect potential time/space complexity bottlenecks.</p>
+            </div>
+          </div>
+
+          <!-- Complexity Box -->
+          <div class="complexity-box">
+            <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #047857; letter-spacing: 0.03em;">
+              Asymptotic Complexity Comparison
+            </div>
+            <div class="complexity-grid">
+              <div class="complexity-item flawed">
+                <div class="label">Detected Worst-Case</div>
+                <div class="value" id="detected-complexity">O(1)</div>
+              </div>
+              <div class="complexity-item optimal">
+                <div class="label">Target Optimal</div>
+                <div class="value" id="optimal-complexity">O(1)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flaws Container -->
+          <div style="font-size: 0.84rem; font-weight: 800; text-transform: uppercase; color: #64748b; margin-top: 0.25rem;">
+            Detected Anti-Patterns & Bottlenecks
+          </div>
+          <div class="flaws-container" id="flaws-container">
+            <!-- Dynamic Flaw Cards Injected Here -->
+          </div>
+
+          <!-- Passed Invariants -->
+          <div class="passed-box">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 15px; height: 15px; color: #10b981;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Verified Algorithmic Invariants
+            </h4>
+            <ul class="passed-list" id="passed-list">
+              <!-- Dynamic Passed Tags -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Front Page Bottom Feature Showcase -->
+      <div class="front-features-section">
+        <div class="features-heading">
+          <h2>Why Spot Algorithmic Anti-Patterns Early?</h2>
+          <p>Common design flaws look innocent in small test cases but crash under production and interview scale.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3>Eliminate Accidental O(N²) Loops</h3>
+            <p>Calling Python <code>if x in list:</code> or JavaScript <code>arr.indexOf()</code> inside a loop scans elements linearly, turning an O(N) pass into an accidental O(N²) timeout on N = 100,000.</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <h3>Prevent Cyclic Memory Crashes (MLE)</h3>
+            <p>Queue-based BFS without a <code>visited</code> set oscillates endlessly between undirected nodes, inflating queue size exponentially until out-of-memory errors occur.</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3>Ace Technical Interview Rounds</h3>
+            <p>Big Tech interviewers at Google, Meta, and Amazon specifically test your ability to spot non-monotonic two pointers, off-by-one binary search midpoints, and memoization gaps.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 2: ANTI-PATTERN CATALOG ==================== -->
+    <section class="view-section" id="view-catalog">
+      <div class="hero-header">
+        <h1 class="hero-title">DSA Anti-Pattern Catalog</h1>
+        <p class="hero-subtitle">Explore high-frequency algorithmic traps, their mathematical failure reasons, and optimal industry patterns.</p>
+      </div>
+
+      <div class="catalog-controls">
+        <div class="search-input-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="catalog-search" class="search-input" placeholder="Search patterns, algorithms, or LeetCode topics...">
+        </div>
+
+        <div class="category-pills">
+          <button class="pill-btn active" data-cat="all">All Topics</button>
+          <button class="pill-btn" data-cat="Arrays">Arrays & Strings</button>
+          <button class="pill-btn" data-cat="Recursion">Recursion & DP</button>
+          <button class="pill-btn" data-cat="Graphs">Trees & Graphs</button>
+          <button class="pill-btn" data-cat="Search">Binary Search</button>
+          <button class="pill-btn" data-cat="Sorting">Sorting & Heaps</button>
+        </div>
+      </div>
+
+      <div class="catalog-grid" id="catalog-grid">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: INTERACTIVE QUIZ ==================== -->
+    <section class="view-section" id="view-quiz">
+      <div class="hero-header">
+        <h1 class="hero-title">Spot the Algorithmic Trap</h1>
+        <p class="hero-subtitle">Sharpen your engineering intuition by spotting subtle DSA bugs in real technical interview snippets.</p>
+      </div>
+
+      <div class="quiz-container">
+        <div class="quiz-card">
+          <div class="quiz-meta">
+            <span id="quiz-progress">Question 1 of 8</span>
+            <span id="quiz-score" style="font-weight: 700; color: #047857;">Score: 0/0</span>
+          </div>
+
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+          </div>
+
+          <h2 class="quiz-question-title" id="quiz-title">Loading Question...</h2>
+
+          <div class="quiz-code-box" id="quiz-code">// Loading snippet...</div>
+
+          <div class="quiz-options-list" id="quiz-options-list">
+            <!-- Options injected by app.js -->
+          </div>
+
+          <div class="quiz-feedback" id="quiz-feedback">
+            <h4 id="quiz-feedback-title">Feedback</h4>
+            <p id="quiz-feedback-text">Explanation...</p>
+          </div>
+
+          <div class="quiz-nav-row">
+            <div></div>
+            <button id="quiz-btn-next" class="btn-primary" style="display: none;">
+              Next Question →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: COMPLEXITY MATRIX ==================== -->
+    <section class="view-section" id="view-matrix">
+      <div class="hero-header">
+        <h1 class="hero-title">DSA Complexity Matrix & Guide</h1>
+        <p class="hero-subtitle">Standard Big-O reference for operations across primary data structures and algorithmic paradigms.</p>
+      </div>
+
+      <div class="matrix-card">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Data Structure</th>
+              <th>Access</th>
+              <th>Search</th>
+              <th>Insertion</th>
+              <th>Deletion</th>
+              <th>Common Anti-Pattern Trap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Array / Dynamic List</strong></td>
+              <td><span class="badge-green">O(1)</span></td>
+              <td><span class="badge-amber">O(N)</span></td>
+              <td><span class="badge-amber">O(N)</span> (O(1) amort. end)</td>
+              <td><span class="badge-amber">O(N)</span></td>
+              <td>Calling <code>pop(0)</code> or <code>shift()</code> in loops (forces O(N) memory shift)</td>
+            </tr>
+            <tr>
+              <td><strong>Hash Map / Hash Set</strong></td>
+              <td><span class="badge-green">N/A</span></td>
+              <td><span class="badge-green">O(1) avg</span> / <span class="badge-red">O(N)</span></td>
+              <td><span class="badge-green">O(1) avg</span> / <span class="badge-red">O(N)</span></td>
+              <td><span class="badge-green">O(1) avg</span> / <span class="badge-red">O(N)</span></td>
+              <td>Using mutable keys (lists/arrays) or unhashed collisions</td>
+            </tr>
+            <tr>
+              <td><strong>Queue (FIFO Deque)</strong></td>
+              <td><span class="badge-amber">O(N)</span></td>
+              <td><span class="badge-amber">O(N)</span></td>
+              <td><span class="badge-green">O(1)</span> (enqueue)</td>
+              <td><span class="badge-green">O(1)</span> (dequeue)</td>
+              <td>Simulating Queue with dynamic array <code>arr.pop(0)</code></td>
+            </tr>
+            <tr>
+              <td><strong>Binary Search Tree (BST)</strong></td>
+              <td><span class="badge-green">O(log N)</span> / <span class="badge-red">O(N)</span></td>
+              <td><span class="badge-green">O(log N)</span> / <span class="badge-red">O(N)</span></td>
+              <td><span class="badge-green">O(log N)</span> / <span class="badge-red">O(N)</span></td>
+              <td><span class="badge-green">O(log N)</span> / <span class="badge-red">O(N)</span></td>
+              <td>Degeneration to linked list on sorted inputs (unbalanced tree)</td>
+            </tr>
+            <tr>
+              <td><strong>Binary Heap (PriorityQueue)</strong></td>
+              <td><span class="badge-green">O(1)</span> (peek)</td>
+              <td><span class="badge-amber">O(N)</span></td>
+              <td><span class="badge-green">O(log N)</span></td>
+              <td><span class="badge-green">O(log N)</span> (extract)</td>
+              <td>Building heap by N pushes (O(N log N)) instead of linear heapify (O(N))</td>
+            </tr>
+            <tr>
+              <td><strong>Graph (Adjacency List)</strong></td>
+              <td><span class="badge-green">O(1)</span> vertex lookup</td>
+              <td><span class="badge-green">O(V + E)</span></td>
+              <td><span class="badge-green">O(1)</span> edge</td>
+              <td><span class="badge-green">O(E)</span></td>
+              <td>Traversing cyclic graph without marking nodes in a <code>visited</code> set</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Side-by-Side Diff Modal -->
+  <div class="modal-overlay" id="diff-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Pattern Comparison</h3>
+        <button class="btn-icon" id="modal-close" style="border: none;">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="diff-grid">
+          <div class="diff-panel flawed">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Anti-Pattern Implementation
+            </h4>
+            <pre id="modal-bad-code">// Anti-pattern code...</pre>
+          </div>
+          <div class="diff-panel optimal">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Optimal Solution
+            </h4>
+            <pre id="modal-good-code">// Optimal code...</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <div class="toast-icon">
+      <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <div class="toast-msg" id="toast-msg">Notification message</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div>AlgoGuard DSA Pattern Detector &copy; 2026. Built with bright modern white & green design.</div>
+    <div style="margin-top: 4px; font-size: 0.8rem; color: #047857; font-weight: 600;">Designed for software engineers preparing for technical interviews at Google, Meta, Amazon, and top tech companies.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="patterns-data.js"></script>
+  <script src="analyzer.js"></script>
+  <script src="quiz-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
